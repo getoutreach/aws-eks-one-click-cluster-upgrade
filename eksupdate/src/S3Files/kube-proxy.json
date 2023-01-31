@@ -25,7 +25,19 @@
             "metadata": {
                 "labels": {
                     "k8s-app": "kube-proxy"
-                }
+                },
+            "annotations": {
+                "ad.datadoghq.com/kube-proxy.check_names": ["kube_proxy"],
+                "ad.datadoghq.com/kube-proxy.init_configs": [{}],
+                "ad.datadoghq.com/kube-proxy.instances": 
+                [
+                    {
+                    "metrics": ["*"],
+                    "namespace": "kube_proxy",
+                    "prometheus_url": "http://%%host%%:10249/metrics",
+                    "send_distribution_buckets": true
+                    }
+                ]
             },
             "spec": {
                 "affinity": {
